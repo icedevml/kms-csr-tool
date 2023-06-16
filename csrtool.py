@@ -14,7 +14,7 @@ subprocess.run("gcloud auth application-default login --no-launch-browser", shel
 while True:
     while True:
         print("[!] Configure signing")
-        project_name = input("Enter GCP project name: ").strip()
+        project_id = input("Enter GCP project id: ").strip()
         location = input("Enter GCP location: ").strip()
         key_ring = input("Enter key ring name: ").strip()
         key_name = shlex.quote('pkcs11:object=' + input("Enter key name: ").strip())
@@ -26,7 +26,7 @@ while True:
 
     print("[!] Writing PKCS11 config file")
     with open('/tmp/pkcs11-config.yml', 'w') as f:
-        yaml.dump({"tokens": [{"key_ring": f"projects/{project_name}/locations/{location}/keyRings/{key_ring}"}]}, f)
+        yaml.dump({"tokens": [{"key_ring": f"projects/{project_id}/locations/{location}/keyRings/{key_ring}"}]}, f)
 
     print("[!] Running OpenSSL CSR tool")
     env = dict(os.environ)
