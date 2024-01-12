@@ -14,8 +14,8 @@ subprocess.run("gcloud auth application-default login --no-launch-browser", shel
 while True:
     while True:
         print("[!] Configure signing")
-        project_id = input("Enter GCP project id: ").strip()
-        location = input("Enter GCP location: ").strip()
+        project_id = input("Enter GCP project id (a string, example: myproject): ").strip()
+        location = input("Enter GCP location (example: europe-west6): ").strip()
         key_ring = input("Enter key ring name: ").strip()
         key_name = shlex.quote('pkcs11:object=' + input("Enter key name: ").strip())
 
