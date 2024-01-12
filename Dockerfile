@@ -13,7 +13,7 @@ RUN curl -s -L -o /tmp/libkmsp13.tgz https://github.com/GoogleCloudPlatform/kms-
     echo 'export PKCS11_MODULE_PATH="/usr/local/lib/libkmsp11.so"' | tee -a /etc/profile
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
+RUN pip3 install --no-cache-dir --break-system-packages -r /tmp/requirements.txt
 
 COPY . /app
 WORKDIR /app
