@@ -6,7 +6,7 @@ RUN apt-get update && \
 
 RUN curl -s -L -o /tmp/libkmsp11.tgz https://github.com/GoogleCloudPlatform/kms-integrations/releases/download/pkcs11-v1.3/libkmsp11-1.3-linux-amd64.tar.gz && \
     cd /tmp && \
-    echo "57ccc2d6c220769f7b53e86d62d381b50eecf71aa093cc7ca69f6e85b37acb44 *libkmsp13.tgz" | sha256sum -c && \
+    echo "57ccc2d6c220769f7b53e86d62d381b50eecf71aa093cc7ca69f6e85b37acb44 *libkmsp11.tgz" | sha256sum -c && \
     tar -xopf /tmp/libkmsp11.tgz && \
     mv /tmp/libkmsp11-1.3-linux-amd64/libkmsp11.so /usr/local/lib/ && \
     mv /tmp/libkmsp11-1.3-linux-amd64/kmsp11.h /usr/local/include/ && \
