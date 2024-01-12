@@ -14,7 +14,7 @@ SOFTWARE.
 
 1. Run the following command:
    ```
-   docker run -it icedevml/kms-csr-tool:build202306161718
+   docker run -it icedevml/kms-csr-tool:build202401130057
    ```
 
 2. The GCP authentication link will be generated, copy that link to your browser and perform authentication.
