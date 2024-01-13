@@ -1,4 +1,4 @@
-FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
+FROM gcr.io/google.com/cloudsdktool/google-cloud-cli:459.0.0-slim
 
 RUN apt-get update && \
     apt-get install -y libengine-pkcs11-openssl && \
