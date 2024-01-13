@@ -16,7 +16,10 @@ SOFTWARE.
 
 1. Run the following command:
    ```
-   docker run -it icedevml/kms-csr-tool:build202401130057
+   # ensure to delete old stale versions
+   docker image rm ghcr.io/icedevml/kms-csr-tool:master
+   # run the tool
+   docker run -it ghcr.io/icedevml/kms-csr-tool:master
    ```
 
 2. The GCP authentication link will be generated, copy that link to your browser and perform authentication.
