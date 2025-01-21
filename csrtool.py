@@ -17,7 +17,19 @@ while True:
         project_id = input("Enter GCP project id (a string, example: myproject): ").strip()
         location = input("Enter GCP location (example: europe-west6): ").strip()
         key_ring = input("Enter key ring name: ").strip()
-        key_name = shlex.quote('pkcs11:object=' + input("Enter key name: ").strip())
+        key_name = input("Enter key name: ").strip()    
+        key_version = input("Enter specific key version or the word 'latest': ").strip().lower()
+
+        if key_version == 'latest':
+            key_arg = shlex.quote('pkcs11:object=' + key_name)
+        else:
+            try:
+                int(key_version)
+            except ValueError:
+                print('[!] Invalid key version, expected an integer, please try again.')
+                continue
+
+            key_arg = shlex.quote(f'pkcs11:id=projects/{project_id}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key_name}/cryptoKeyVersions/{key_version}')
 
         ans = input("[!] Is everything correct? [Y/n] ")
 
@@ -33,7 +45,7 @@ while True:
     env.update({"PKCS11_MODULE_PATH": "/usr/local/lib/libkmsp11.so", "KMS_PKCS11_CONFIG": "/tmp/pkcs11-config.yml"})
 
     try:
-        subprocess.run(f"openssl req -new -sha256 -engine pkcs11 -keyform engine -key {key_name} > /tmp/my-csr.csr", shell=True, check=True, env=env)
+        subprocess.run(f"openssl req -new -sha256 -engine pkcs11 -keyform engine -key {key_arg} > /tmp/my-csr.csr", shell=True, check=True, env=env)
         break
     except subprocess.CalledProcessError:
         ans = input("[!] CSR generation failed, try again? [y/N] ")
