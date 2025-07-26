@@ -1,7 +1,7 @@
-# Google Cloud KMS - CSR generation tool
-
 > [!CAUTION]
 > Please see [icedevml/pykmstool](https://github.com/icedevml/pykmstool) for a modernized and maintained version of this tool. This project is archived and is not maintained anymore.
+
+# Google Cloud KMS - CSR generation tool
 
 This tool could help you to generate a Certificate Signing Request (CSR) using a key that was generated inside a HSM provided by Google Cloud KMS. Especially, such CSRs might be demanded by a Certificate Authority in order to issue a certificate.
 
